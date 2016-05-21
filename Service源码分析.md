@@ -7,7 +7,7 @@
   
   ## Service的本质
   Service家族的体系如图所示：
-   ![](Service.svg)
+   ![](Service.png)
    
    `Service`是`Context`的子类，因此具备了`资源访问`和`组件调用`的能力，除此之外，它还具有独立的`生命周期`。
    
@@ -489,7 +489,7 @@ public abstract class ApplicationThreadNative extends Binder
 
 它的家族体系如图所示：
 
-![](ApplicationThread.svg)
+![](ApplicationThread.png)
 
 
 由前面的分析可知，远程服务端最终会调用 `ApplicationThread。scheduleCreateService`，那么我们来看看`scheduleCreateService`是怎样实现的：
