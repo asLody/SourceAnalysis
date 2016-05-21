@@ -9,6 +9,7 @@
 ##Service的本质
   
   Service家族的体系如图所示：
+  
    ![](Service.jpg)
    
    `Service`是`Context`的子类，因此具备了`资源访问`和`组件调用`的能力，除此之外，它还具有独立的`生命周期`。
