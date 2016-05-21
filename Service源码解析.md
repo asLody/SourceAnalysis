@@ -9,7 +9,7 @@
 ##Service的本质
   
   Service家族的体系如图所示：
-   ![](Service.png)
+   ![](Service.jpg)
    
    `Service`是`Context`的子类，因此具备了`资源访问`和`组件调用`的能力，除此之外，它还具有独立的`生命周期`。
    
@@ -126,7 +126,7 @@
  ```
  `ActivityManagerService`的`startService`被客户端调用后，首先对 Intent 进行检查，然后跳转到调用`mServices.startServiceLocked(...)`进行余下工作。这里的mService的类型是`ActiveServices`，它的作用是什么呢？我们来看看这个类包含了哪些函数：
  
- ![](activeServices.png)
+ ![](activeServices.jpg)
  
  `ActiveServices`的作用显而易见了，它负责处理`Service的组件调用`和`维护Service的状态信息`。那么`startServiceLocked`做了哪些事情呢？我们来看代码：
  
@@ -491,7 +491,7 @@ public abstract class ApplicationThreadNative extends Binder
 
 它的家族体系如图所示：
 
-![](ApplicationThread.png)
+![](ApplicationThread.jpg)
 
 
 由前面的分析可知，远程服务端最终会调用 `ApplicationThread。scheduleCreateService`，那么我们来看看`scheduleCreateService`是怎样实现的：
