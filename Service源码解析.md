@@ -3,9 +3,11 @@
 
 
   ##理解Service
+  
   Service是Android四大组件之一。在一般的App开发场景中，它的存在往往是为了保证App切换到后台后，仍然具备处理数据的能力。Service实现了一套异步的跨进程通信模型，通过`Binder`机制，Service可以优雅的屏蔽跨进程调用的复杂性。一般来说，一个普通的Service运行在*当前进程的主线程中*，也就是说，如果不开辟线程，把耗时的操作直接甩在Service，那么系统就会赏你一个`ANR`（application Not Responding）警告。当然，为了方便做耗时操作，SDK层也提供了`IntentService`，它开辟了一个Work Thread来顺序处理耗时请求，从而避免了阻塞主进程。
   
   ##Service的本质
+  
   Service家族的体系如图所示：
    ![](Service.png)
    
