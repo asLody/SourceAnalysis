@@ -574,7 +574,8 @@ private class H extends Handler {
             //将创建完成的Service放入mServices这个Map中
             mServices.put(data.token, service);
             try {
-               //通知服务端，Service启动完成。 ActivityManagerNative.getDefault().serviceDoneExecuting(
+               //通知服务端，Service启动完成。 
+               ActivityManagerNative.getDefault().serviceDoneExecuting(
                         data.token, SERVICE_DONE_EXECUTING_ANON, 0, 0);
             } catch (RemoteException e) {
                 // nothing to do.
