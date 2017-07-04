@@ -1,12 +1,12 @@
-#Service源码解析
+# Service源码解析
 ---
 
 
-##理解Service
+## 理解Service
   
   Service是Android四大组件之一。在一般的App开发场景中，它的存在往往是为了保证App切换到后台后，仍然具备处理数据的能力。Service实现了一套异步的跨进程通信模型，通过`Binder`机制，Service可以优雅的屏蔽跨进程调用的复杂性。一般来说，一个普通的Service运行在*当前进程的主线程中*，也就是说，如果不开辟线程，把耗时的操作直接甩在Service，那么系统就会赏你一个`ANR`（application Not Responding）警告。当然，为了方便做耗时操作，SDK层也提供了`IntentService`，它开辟了一个Work Thread来顺序处理耗时请求，从而避免了阻塞主进程。
   
-##Service的本质
+## Service的本质
   
   Service家族的体系如图所示：
   
@@ -18,15 +18,15 @@
    * 前台Service
    * 后台Service
    
-  ####前台Service：
+  #### 前台Service：
   通过调用 **Service.startForeground(int id, Notification notification)** 可以使一个后台Service成为前台Service，并与一个Notification`绑定`，显示在通知栏。前台Service与后台Service相比，它所在的进程具有更高的`优先级`，在内存不足时更不容易被系统Kill。
   
-  ####后台Service：
+  #### 后台Service：
   后台Service是指当前没有显示任何界面的Service，处于非前台的Service皆为后台Service，后台Service的优先级低于前台Service，因此在低内存的时候，系统会优先杀掉后台Service。
    
    Service的本身只是一个`空壳`，它是由系统来维护和管理的。因此想要弄清楚Service的工作原理，就得分析它的启动流程。
    
- ##Service启动流程分析
+ ## Service启动流程分析
  Service在`客户端`的启动入口位于 `ContextImpl.startService(Intent intent)`，因此我们从它入手。
  
  **[--> android/app/ContextImpl.java]**
@@ -594,7 +594,7 @@ private class H extends Handler {
   * 将创建完成的Service放入`mServices`这个 Map 中。
   * 通知服务端，Service启动完成。如果前面的过程耗时太长，服务端会认为客户端的Service启动失败。
 
-##总结
+## 总结
 还记得这句话吗？
 > Read the fucking source code !!!
 
